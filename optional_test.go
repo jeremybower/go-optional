@@ -73,3 +73,10 @@ func TestValueIfValid(t *testing.T) {
 		assert.Equal(t, 42, v)
 	})
 }
+
+func TestValueOr(t *testing.T) {
+	t.Parallel()
+
+	assert.Equal(t, 42, Invalid[int]().Or(42))
+	assert.Equal(t, 42, New(42).Or(43))
+}

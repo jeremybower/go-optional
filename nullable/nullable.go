@@ -29,6 +29,14 @@ func (v Value[T]) IfValid(fn func(v *T)) {
 	}
 }
 
+func (v Value[T]) Or(other *T) *T {
+	if v.Valid {
+		return v.Value
+	}
+
+	return other
+}
+
 func (v *Value[T]) UnmarshalJSON(b []byte) error {
 	if len(b) > 0 {
 		v.Valid = true

@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestNullableValue(t *testing.T) {
+func TestValue(t *testing.T) {
 	t.Parallel()
 
 	str := "test"
@@ -29,7 +29,7 @@ func TestNullableValue(t *testing.T) {
 	}
 }
 
-func TestNullableValueUnmarshallJSON(t *testing.T) {
+func TestValueUnmarshallJSON(t *testing.T) {
 	t.Parallel()
 
 	str1 := "test1"
@@ -64,7 +64,7 @@ func TestNullableValueUnmarshallJSON(t *testing.T) {
 	}
 }
 
-func TestNullableValueIfValid(t *testing.T) {
+func TestValueIfValid(t *testing.T) {
 	t.Parallel()
 
 	str := "test"
@@ -76,4 +76,14 @@ func TestNullableValueIfValid(t *testing.T) {
 	New(&str).IfValid(func(v *string) {
 		assert.Equal(t, &str, v)
 	})
+}
+
+func TestValueOr(t *testing.T) {
+	t.Parallel()
+
+	str := "test"
+
+	assert.Nil(t, Invalid[string]().Or(nil))
+	assert.Equal(t, &str, Invalid[string]().Or(&str))
+	assert.Equal(t, &str, New(&str).Or(nil))
 }
