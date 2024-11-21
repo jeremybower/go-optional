@@ -1,5 +1,5 @@
 {
-	"name": "optional",
+	"name": "go-optional",
 	"dockerComposeFile": "../docker-compose.yml",
 	"service": "devtools",
 	"workspaceFolder": "/workspace",
